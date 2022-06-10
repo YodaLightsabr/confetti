@@ -1,10 +1,10 @@
 const openurl = require("openurl");
 
 module.exports = () => {
-    try {
-        openurl.open("raycast://confetti");
-        return true;
-    } catch (err) {
-        return false;
-    }
+    return new Promise((resolve, reject) => {
+        openurl.open("raycast://confetti", (err) => {
+            if (err) resolve(false);
+            else resolve(true);
+        });
+    });
 };
